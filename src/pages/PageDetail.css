@@ -1,0 +1,20 @@
+.image img{
+    width: 300px;
+    height: 350px;
+    margin-top: 16px;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: flex-start;
+}
+.line{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+}
+.line h4{
+    margin-top: 16px;
+}
