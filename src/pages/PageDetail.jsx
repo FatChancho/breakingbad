@@ -3,10 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './PageDetail.css'
 
+/*function catchName (str){
+    if(!str) console.log('errrrrrror')
+    let name=str.split(' ')[0];
+    let surname=str.split(' ')[1];
+    return name+'+'+surname;
+}*/
+
+
 function PageDetail(props) {
     const [char,setChar]=useState([{}])
     const [quote,setQuote]=useState('')
-    const {id}=useParams();
+    const {id,name}=useParams();
+   
     
     useEffect(()=>{
         axios.get(`https://www.breakingbadapi.com/api/characters/${id}`)
@@ -17,14 +26,9 @@ function PageDetail(props) {
         .catch((err)=>console.log('Error al traer el personaje',err))
     },[id])
 
-    const name = (str)=>{
-        let name=str.split(' ')[0];
-        let surname=str.split(' ')[1];
-        return name+'+'+surname;
-    }
-
+    
     useEffect(()=>{
-        axios.get(`https://www.breakingbadapi.com/api/quote/random?author=${name(char[0].name)}`)
+        axios.get(`https://www.breakingbadapi.com/api/quote/random?author=${name}`)
         .then((response)=>{
             setQuote(response.data)
         }) 

@@ -28,7 +28,7 @@ function Homepage() {
                     <div className='info'>
                         <div className='flex'><h4>{char.name}</h4></div>
                         <div className='flex'><p>({char.nickname})</p></div>
-                        <Link to={`/character/${char.char_id}`}><button className='btn'>See more</button></Link>
+                        <Link to={`/character/${char.char_id}/${char.name}`}><button className='btn'>See more</button></Link>
                     </div>
                 </div>
             </div>
