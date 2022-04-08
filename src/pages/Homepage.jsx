@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Homepage.css'
 
@@ -7,7 +7,9 @@ function Homepage() {
     
     const [characters,setCharacters]=useState([{}])
     
+    
     useEffect(()=>{
+    
         axios.get('https://breakingbadapi.com/api/characters')
         .then((response)=>{
             setCharacters(response.data)
