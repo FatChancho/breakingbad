@@ -1,27 +1,21 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './PageDetail.css'
 
-/*function catchName (str){
-    if(!str) console.log('errrrrrror')
-    let name=str.split(' ')[0];
-    let surname=str.split(' ')[1];
-    return name+'+'+surname;
-}*/
 
-
-function PageDetail(props) {
+function PageDetail() {
     const [char,setChar]=useState([{}])
     const [quote,setQuote]=useState('')
     const {id,name}=useParams();
+    const [t,i18n]=useTranslation('global');
    
     
     useEffect(()=>{
         axios.get(`https://www.breakingbadapi.com/api/characters/${id}`)
         .then((response)=>{
             setChar(response.data)
-            console.log(response.data[0].name)
         })
         .catch((err)=>console.log('Error al traer el personaje',err))
     },[id])
@@ -35,8 +29,6 @@ function PageDetail(props) {
         .catch((err)=>console.log('Error al traer la cita',err))
     },[])
 
-    
-
     return (
         <div>
             {char.map((e)=>(
@@ -46,15 +38,15 @@ function PageDetail(props) {
                 </div>
                     
                 <div>
-                    <div className='line'><h4>Name:</h4><p>{e.name}</p></div>
-                    <div className='line'><h4>Birthday:</h4><p>{e.birthday}</p></div>
-                    <div className='line'><h4>Occupation:</h4>{e.occupation ? (e.occupation.map((o)=>(<p>{o}</p>))):<p>Loading..</p>}</div>
-                    <div className='line'><h4>Status:</h4><p>{e.status}</p></div>
-                    <div className='line'><h4>Appearance:</h4><p>{e.appearance}</p></div>
-                    <div className='line'><h4>Nickname:</h4><p>{e.nickname}</p></div>
-                    <div className='line'><h4>Portrayed:</h4><p>{e.portrayed}</p></div>
-                    <div className='line'><h4>Category:</h4><p>{e.category}</p></div>
-                    <div className='line'><h4>Quote:</h4>{quote[0] ? (<p>{quote[0].quote}</p>):(<p>Loading..</p>)}</div>
+                    <div className='line'><h4>{t('PageDetail.name')}:</h4><p>{e.name}</p></div>
+                    <div className='line'><h4>{t('PageDetail.birthday')}:</h4><p>{e.birthday}</p></div>
+                    <div className='line'><h4>{t('PageDetail.occupation')}:</h4>{e.occupation ? (e.occupation.map((o)=>(<p>{o}</p>))):<p>Loading..</p>}</div>
+                    <div className='line'><h4>{t('PageDetail.status')}:</h4><p>{e.status}</p></div>
+                    <div className='line'><h4>{t('PageDetail.appearence')}:</h4><p>{e.appearance}</p></div>
+                    <div className='line'><h4>{t('PageDetail.nickname')}:</h4><p>{e.nickname}</p></div>
+                    <div className='line'><h4>{t('PageDetail.portrayed')}:</h4><p>{e.portrayed}</p></div>
+                    <div className='line'><h4>{t('PageDetail.category')}:</h4><p>{e.category}</p></div>
+                    <div className='line'><h4>{t('PageDetail.quote')}:</h4>{quote[0] ? (<p>{quote[0].quote}</p>):(<p>This character has not any quote</p>)}</div>
 
                 </div>
             </div>

@@ -1,0 +1,19 @@
+{
+    "header":{
+        "hello-world":"Hola mundo"
+    },
+    "Homepage":{
+        "see-more":"ver mas"
+    },
+    "PageDetail":{
+        "name":"Nombre",
+        "birthday":"Nacimiento",
+        "occupation":"Ocupacion",
+        "status":"Status",
+        "appearence":"Temporadas donde aparece",
+        "nickname":"Apodo",
+        "portrayed":"Protagonizado por",
+        "category":"Categoría",
+        "quote":"Frase"
+    }
+}

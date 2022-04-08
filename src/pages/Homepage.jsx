@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState,useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './Homepage.css'
 
 function Homepage() {
-    
+    const [t,i18n]=useTranslation('global');
     const [characters,setCharacters]=useState([{}])
     
     
@@ -28,7 +29,7 @@ function Homepage() {
                     <div className='info'>
                         <div className='flex'><h4>{char.name}</h4></div>
                         <div className='flex'><p>({char.nickname})</p></div>
-                        <Link to={`/character/${char.char_id}/${char.name}`}><button className='btn'>See more</button></Link>
+                        <Link to={`/character/${char.char_id}/${char.name}`}><button className='btn'>{t('Homepage.see-more')}</button></Link>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,19 @@
+{
+    "header":{
+        "hello-world":"Hello World"
+    },
+    "Homepage":{
+        "see-more":"see more"
+    },
+    "PageDetail":{
+        "name":"Name",
+        "birthday":"Birthday",
+        "occupation":"Occupation",
+        "status":"Status",
+        "appearence":"Apperarence",
+        "nickname":"Nickname",
+        "portrayed":"Portrayed",
+        "category":"Category",
+        "quote":"Quote"
+    }
+}
