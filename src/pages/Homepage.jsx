@@ -3,10 +3,20 @@ import React, { useEffect, useState,useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './Homepage.css'
+import Search from '../Components/Search';
 
 function Homepage() {
     const [t,i18n]=useTranslation('global');
     const [characters,setCharacters]=useState([{}])
+    const [filteredCharacters,setFilteredCharacters]=useState(characters)
+
+    const search = (str)=>{
+        
+        let filter=filteredCharacters.filter((char)=>{
+            return char.name.toLowerCase().includes(str.toLowerCase())
+        })
+        setCharacters(filter);
+    }
     
     
     useEffect(()=>{
@@ -20,9 +30,10 @@ function Homepage() {
 
     return (
         <div className='homepage'>
+        <Search search={search}/>
             {characters.map((char)=>(
-            <div className='galery'>
-                <div className='box' key={char.char_id}>
+            <div className='galery' key={char.char_id}>
+                <div className='box'>
                     <div>
                         <img src={char.img} alt='foto-personaje'></img>
                     </div>
