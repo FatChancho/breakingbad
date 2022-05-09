@@ -8,10 +8,11 @@ import Search from '../Components/Search';
 function Homepage() {
     const [t,i18n]=useTranslation('global');
     const [characters,setCharacters]=useState([{}])
-    const [filteredCharacters,setFilteredCharacters]=useState(characters)
+    const [filteredCharacters,setFilteredCharacters]=useState([{}])
 
     const search = (str)=>{
         
+        console.log(filteredCharacters)
         let filter=filteredCharacters.filter((char)=>{
             return char.name.toLowerCase().includes(str.toLowerCase())
         })
@@ -24,6 +25,7 @@ function Homepage() {
         axios.get('https://breakingbadapi.com/api/characters')
         .then((response)=>{
             setCharacters(response.data)
+            setFilteredCharacters(response.data)
         })
         .catch((err)=>console.log('Error al traer los personajes',err));
     },[])
@@ -32,8 +34,8 @@ function Homepage() {
         <div className='homepage'>
         <Search search={search}/>
             {characters.map((char)=>(
-            <div className='galery' key={char.char_id}>
-                <div className='box'>
+            <div className='galery'>
+                <div className='box' key={char.char_id}>
                     <div>
                         <img src={char.img} alt='foto-personaje'></img>
                     </div>
