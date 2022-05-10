@@ -20,7 +20,7 @@ function Homepage() {
     }
     
     
-    useEffect(()=>{
+    /*useEffect(()=>{
     
         axios.get('https://breakingbadapi.com/api/characters')
         .then((response)=>{
@@ -28,6 +28,19 @@ function Homepage() {
             setFilteredCharacters(response.data)
         })
         .catch((err)=>console.log('Error al traer los personajes',err));
+    },[])*/
+
+    useEffect(()=>{
+        async function response(){
+            try{
+                const res= await axios.get('https://breakingbadapi.com/api/characters');
+                setCharacters(res.data)
+                setFilteredCharacters(res.data)   
+            }catch (err){
+                console.log(err)
+            }
+        }
+        response();
     },[])
 
     return (
